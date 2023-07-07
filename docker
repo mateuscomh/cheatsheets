@@ -36,3 +36,6 @@ docker rmi $(docker images | grep "^<none>" | awk "{print $3}")
 
 # To remove all volumes not used by at least one container:
 docker volume prune
+
+# To update all docker images
+docker images | awk '{if ($1!="REPOSITORY") print $1}' | xargs -L1 docker pul
